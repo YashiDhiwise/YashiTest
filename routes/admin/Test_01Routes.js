@@ -1,0 +1,21 @@
+const express = require('express');
+const router = express.Router();
+const Test_01Controller = require('../../controller/admin/Test_01Controller');
+const auth = require('../../middleware/auth');
+const checkRolePermission = require('../../middleware/checkRolePermission');
+router.route('/admin/test_01/create').post(auth(...[ 'createByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.addTest_01);
+router.route('/admin/test_01/list').post(auth(...[ 'getAllByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.findAllTest_01);
+router.route('/admin/test_01/count').post(auth(...[ 'getCountByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.getTest_01Count);
+router.route('/admin/test_01/aggregate').post(auth(...[ 'aggregateByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.getTest_01ByAggregate);
+router.route('/admin/test_01/softDeleteMany').put(auth(...[ 'softDeleteManyByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.softDeleteManyTest_01);
+router.route('/admin/test_01/addBulk').post(auth(...[ 'addBulkByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.bulkInsertTest_01);
+router.route('/admin/test_01/updateBulk').put(auth(...[ 'updateBulkByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.bulkUpdateTest_01);
+router.route('/admin/test_01/deleteMany').delete(auth(...[ 'deleteManyByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.deleteManyTest_01);
+router.route('/admin/test_01/softDelete/:id').put(auth(...[ 'softDeleteByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.softDeleteTest_01);
+router.route('/admin/test_01/partial-update/:id').put(auth(...[ 'partialUpdateByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.partialUpdateTest_01);
+router.route('/admin/test_01/update/:id').put(auth(...[ 'updateByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.updateTest_01);    
+router.route('/admin/test_01/:id').get(auth(...[ 'getByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.getTest_01);
+router.route('/admin/test_01/:id').post(auth(...[ 'getByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.getTest_01);
+router.route('/admin/test_01/delete/:id').delete(auth(...[ 'deleteByAdminInAdminPlatform' ]),checkRolePermission,Test_01Controller.deleteTest_01);
+
+module.exports = router;

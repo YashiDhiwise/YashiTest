@@ -1,0 +1,21 @@
+const express = require('express');
+const router = express.Router();
+const Test_01Controller = require('../../controller/device/Test_01Controller');
+const auth = require('../../middleware/auth');
+const checkRolePermission = require('../../middleware/checkRolePermission');
+router.route('/device/api/v1/test_01/create').post(auth(...[ 'createByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.addTest_01);
+router.route('/device/api/v1/test_01/list').post(auth(...[ 'getAllByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.findAllTest_01);
+router.route('/device/api/v1/test_01/count').post(auth(...[ 'getCountByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.getTest_01Count);
+router.route('/device/api/v1/test_01/aggregate').post(auth(...[ 'aggregateByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.getTest_01ByAggregate);
+router.route('/device/api/v1/test_01/softDeleteMany').put(auth(...[ 'softDeleteManyByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.softDeleteManyTest_01);
+router.route('/device/api/v1/test_01/addBulk').post(auth(...[ 'addBulkByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.bulkInsertTest_01);
+router.route('/device/api/v1/test_01/updateBulk').put(auth(...[ 'updateBulkByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.bulkUpdateTest_01);
+router.route('/device/api/v1/test_01/deleteMany').delete(auth(...[ 'deleteManyByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.deleteManyTest_01);
+router.route('/device/api/v1/test_01/softDelete/:id').put(auth(...[ 'softDeleteByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.softDeleteTest_01);
+router.route('/device/api/v1/test_01/partial-update/:id').put(auth(...[ 'partialUpdateByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.partialUpdateTest_01);
+router.route('/device/api/v1/test_01/update/:id').put(auth(...[ 'updateByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.updateTest_01);    
+router.route('/device/api/v1/test_01/:id').get(auth(...[ 'getByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.getTest_01);
+router.route('/device/api/v1/test_01/:id').post(auth(...[ 'getByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.getTest_01);
+router.route('/device/api/v1/test_01/delete/:id').delete(auth(...[ 'deleteByUserInDevicePlatform' ]),checkRolePermission,Test_01Controller.deleteTest_01);
+
+module.exports = router;
